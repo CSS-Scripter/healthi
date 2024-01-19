@@ -7,25 +7,31 @@ type Entry[T comparable, R any] struct {
 }
 
 func (m Map[T, R]) Keys() Slice[T] {
-	s := Slice[T]{}
+	s := make(Slice[T], len(m))
+	i := 0
 	for k := range m {
-		s = append(s, k)
+		s[i] = k
+		i++
 	}
 	return s
 }
 
 func (m Map[T, R]) Values() Slice[R] {
-	s := Slice[R]{}
+	s := make(Slice[R], len(m))
+	i := 0
 	for _, v := range m {
-		s = append(s, v)
+		s[i] = v
+		i++
 	}
 	return s
 }
 
 func (m Map[T, R]) Entries() Slice[Entry[T, R]] {
-	s := Slice[Entry[T, R]]{}
+	s := make(Slice[Entry[T, R]], len(m))
+	i := 0
 	for k, v := range m {
-		s = append(s, Entry[T, R]{k, v})
+		s[i] = Entry[T, R]{k, v}
+		i++
 	}
 	return s
 }
