@@ -1,0 +1,16 @@
+services:
+  - name: portfolio site
+    interval: 10
+    failure_strategy: all
+    failure_count: 5
+    scrape:
+      - name: main site
+        urls:
+          - https://lnmn.nl/404
+        method: GET
+        status: 200
+    alerting:
+      - name: notify discord
+        type: webhook
+        settings:
+          url: 
